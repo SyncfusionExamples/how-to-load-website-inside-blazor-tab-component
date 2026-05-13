@@ -1,6 +1,5 @@
 # How to Load a Web Page Inside Blazor Tab Component?
 
-**Repository Description**  
 This repository contains a Blazor sample that demonstrates how to load external web page content inside the Syncfusion Blazor Tab component.
 
 This example shows how a website can be embedded and displayed within a tab, enabling users to view web content as part of a tab‑based interface in a Blazor application.
