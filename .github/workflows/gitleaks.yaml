@@ -33,12 +33,12 @@ jobs:
        if: steps.gitleaks.outcome != 'success'
        run: |
         mkdir -p $GITHUB_WORKSPACE/dotnet
-        curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --install-dir $GITHUB_WORKSPACE/dotnet --channel 10.0
+        curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --install-dir $GITHUB_WORKSPACE/dotnet --channel 6.0
      - name: Install the report tool packages
        if: steps.gitleaks.outcome != 'success'
        run: |
            export PATH=$GITHUB_WORKSPACE/dotnet:$PATH
            nuget install "Syncfusion.Email" -source ${{ secrets.NexusFeedLink }} -ExcludeVersion
-           dir $GITHUB_WORKSPACE/Syncfusion.Email/lib/net10.0
-           dotnet $GITHUB_WORKSPACE/Syncfusion.Email/lib/net10.0/GitleaksReportMail.dll ${{ secrets.CITEAMCREDENTIALS }} "$GITHUB_REF_NAME" ${{ secrets.NETWORKCREDENTIALS }} ${{ secrets.NETWORKKEY }} "$GITHUB_WORKSPACE" ${{ secrets.ORGANIZATIONNAME }}
+           dir $GITHUB_WORKSPACE/Syncfusion.Email/lib/net6.0
+           dotnet $GITHUB_WORKSPACE/Syncfusion.Email/lib/net6.0/GitleaksReportMail.dll ${{ secrets.CITEAMCREDENTIALS }} "$GITHUB_REF_NAME" ${{ secrets.NETWORKCREDENTIALS }} ${{ secrets.NETWORKKEY }} "$GITHUB_WORKSPACE" ${{ secrets.ORGANIZATIONNAME }}
            exit 1
